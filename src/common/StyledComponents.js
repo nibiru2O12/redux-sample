@@ -40,3 +40,31 @@ export const Button = styled.a`
         font-weight: bold;
     }
 `;
+
+export const Nav = styled.ul`
+
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    background: rgba(0,0,0,.2);
+    
+    & li {
+        display: inline-block;
+        margin-left: 10px;
+
+        & a {
+            color: black;
+           display: inline-block;
+            padding: 20px;
+            cursor: pointer;
+            text-style: none;
+            text-decoration: none;
+
+            &:hover, &:active{
+                background: rgba(0,0,0,.7);
+                color: white;
+            }
+        }
+    }
+
+`;

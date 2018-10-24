@@ -2,6 +2,7 @@ import { Wrapper } from './../common/StyledComponents';
 import React, { Component } from 'react';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
 import Authentication from './Authentication';
+import TopNav from '../components/TopNav';
 
 class App extends Component {
 
@@ -17,15 +18,17 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Wrapper>
-          <Switch>
-            <Route path="/auth" component={Authentication} />
-            <Route path="/" render={()=><h1>Welcome!</h1>} />
-          </Switch>
-        </Wrapper>
+          <div>
+            <TopNav />
+            <Switch>
+              <Route path="/auth" component={Authentication} />
+              <Route path="/" render={()=><h1>Welcome!</h1>} />
+            </Switch>
+          </div>
       </Router>
     );
   }
 }
+
 
 export default App;
