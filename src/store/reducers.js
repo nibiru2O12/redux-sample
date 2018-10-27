@@ -15,6 +15,8 @@ const auth = (state=auth_initial,action) => {
                 return {...auth_initial,error:action.error};
             case types.LOGIN_SUCCESS:
                 return {...auth_initial,success:true, isAuth:true};
+            case types.LOGIN_OUT:
+                return {...auth_initial};
             default:
                 return state;
         }
