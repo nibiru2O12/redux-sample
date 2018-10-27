@@ -50,7 +50,6 @@ export const Nav = styled.ul`
     
     & li {
         display: inline-block;
-        margin-left: 10px;
 
         & a {
             color: black;

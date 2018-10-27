@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <Router>
           <div>
-            <TopNav />
+            <Route path='/' component={TopNav} />
             <Switch>
               <Route path="/auth" component={Authentication} />
               <Route path="/" render={()=><h1>Welcome!</h1>} />
