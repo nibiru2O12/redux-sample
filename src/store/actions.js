@@ -1,25 +1,19 @@
 import * as types from './type';
 
-
-const loginStart = () => {
-     return {
-               type: types.LOGIN_START,
-         }
+// generate an action creator
+const makeActionCreator = (type,...argsName) => {
+    return (...payloads) => {
+        const action = { type };
+        argsName.forEach((arg,i)=>{
+            action[arg] = payloads[i];
+        })
+        return action;
+    } 
 }
 
-const loginFailed = (error) => {
-     return {
-            type: types.LOGIN_ERROR,
-            error
-         }
-}
-
-const loginSuccess = (user) => {
-    return {
-        type : types.LOGIN_SUCCESS,
-        user
-    }
-}
+const loginStart = makeActionCreator(types.LOGIN_START);
+const loginFailed = makeActionCreator(types.LOGIN_START);
+const loginSuccess = makeActionCreator(types.LOGIN_START,'user');
 
 export const login = ({user,password}) => {
     return dispatch => {
@@ -33,7 +27,7 @@ export const login = ({user,password}) => {
 function fakeFetch(){
     return new Promise((resolve,reject)=>{
         setTimeout(()=>{
-            reject("Something went wrong")
+            resolve("Something went wrong")
         },5000)
     })
 }

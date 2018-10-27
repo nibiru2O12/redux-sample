@@ -9,7 +9,6 @@ import rootReducer from './store/reducers';
 
 import * as actions from './store/actions';
 
-
 // applyMiddleware injects store to applyMiddleware
 // middleware must return a function that accepts di
 const logger = (store) => {
@@ -32,6 +31,9 @@ const crashReport = store => next => action => {
 }
 
 const store = createStore(rootReducer,{auth:{showTopNav:true}},applyMiddleware(logger,crashReport,thunk));
+
+store.dispatch(actions.login({user:"rj",password:"1234"}))
+
 ReactDOM.render(
     <Provider store={store}>
         <App />
