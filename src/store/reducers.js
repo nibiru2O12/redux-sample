@@ -1,7 +1,6 @@
 import {combineReducers} from 'redux';
 import * as types from './type';
 
-
 const auth_initial = {
     isAuthenticating: false,
     isAuth: true,

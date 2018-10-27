@@ -14,5 +14,8 @@ const loginFailed = (error) => {
 }
 
 export const login = ({user,password}) => {
-    console.log('logging in')
+    return {
+        type: types.LOGIN_SUCCESS,
+        user
+    }
 }
