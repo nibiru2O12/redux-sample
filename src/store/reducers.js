@@ -3,7 +3,7 @@ import * as types from './type';
 
 const auth_initial = {
     isAuthenticating: false,
-    isAuth: true,
+    isAuth: false,
     success: false,
     error: null,
 } ;
