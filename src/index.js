@@ -10,11 +10,28 @@ import rootReducer from './store/reducers';
 import * as actions from './store/actions';
 
 
-const store = createStore(rootReducer,applyMiddleware(thunk));
+// applyMiddleware injects store to applyMiddleware
+// middleware must return a function that accepts di
+const logger = (store) => {
+	return next => {
+		return action => {
+			console.log('dispatching', action);
+			const value = next(action) //dispatch action;
+			console.log('new state ', store.getState())
+            return value;
+        }
+	}
+}
 
-store.subscribe(()=>console.log(store.getState()))
-store.dispatch(actions.login({}))
+const crashReport = store => next => action => {
+    try{
+        return next(action)
+    }catch(e){
+        console.error(e);
+    }
+}
 
+const store = createStore(rootReducer,{auth:{showTopNav:true}},applyMiddleware(logger,crashReport,thunk));
 ReactDOM.render(
     <Provider store={store}>
         <App />
